@@ -1,5 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light py-1">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">
+      <img src="./assets/logo.png" width="auto" height="32px" alt="Home" />
+    </a>
 
-<div class="d-flex flex-column">
-  <h1>Work</h1>
-  <h1>in progress</h1>
-</div>
+    <button
+      class="navbar-toggler btn"
+      type="button"
+      (click)="toggleMobileMenu()"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div
+      class="collapse navbar-collapse"
+      [ngClass]="expandMobileMenu ? 'show' : ''"
+    >
+      @if (isAuth()) {
+      <ul class="navbar-nav mr-auto w-100 d-flex align-items-lg-center">
+        <li class="nav-item mx-1">
+          <a class="nav-link" routerLink="/visited">
+            <span translate>Visited</span>
+          </a>
+        </li>
+
+        <li class="nav-item mx-1">
+          <a class="nav-link" routerLinkActive="active" routerLink="/wish">
+            <span translate>Wish</span>
+          </a>
+        </li>
+      </ul>
+      }
+
+      <ul class="navbar-nav d-flex align-items-lg-center">
+        @if (isAuth()) {
+        <button class="mx-2 btn btn-primary" (click)="logout()">Logout</button>
+        } @else {
+        <button class="mx-2 btn btn-outline-primary" routerLink="/register">
+          Register
+        </button>
+        <button class="mx-2 btn btn-primary" routerLink="/login">Login</button>
+        }
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
