@@ -20,6 +20,7 @@ export const routes: Routes = [
     path: '',
     component: HomeComponent,
     canActivate: [authGuard],
+    runGuardsAndResolvers: 'always',
     children: [
         {
             path: '',
