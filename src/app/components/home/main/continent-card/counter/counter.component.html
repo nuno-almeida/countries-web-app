@@ -1,0 +1,9 @@
+<div class="border px-3 p-2 d-flex justify-content-between align-items-center counter"
+    [ngClass]="type === 'visited' ? 'bg-light' : 'bg-light-subtle'">
+    <p class="counter-label">
+        @if (type === 'visited') {Visited} @else {Wish to visit}
+    </p>
+    <p class="badge counter-value" [ngClass]="type === 'visited' ? 'text-bg-dark' : 'text-bg-secondary'">
+        {{ value }}
+    </p>
+</div>

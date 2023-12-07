@@ -1,2 +1,5 @@
-<p>main works!</p>
-
+<div class="d-flex flex-wrap justify-content-center gap-5 m-5">
+    @for (item of data; track item.id) {
+    <app-continent-card [continent]="item"></app-continent-card>
+    }
+</div>

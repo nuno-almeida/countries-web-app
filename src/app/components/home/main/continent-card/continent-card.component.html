@@ -1,0 +1,12 @@
+<div class="card continent-card" (click)="onClick()">
+  <div class="card-body" style="cursor: pointer">
+    <h1 class="card-title font-weight-bold text-center text-secondary">
+      {{ continent.title }}
+    </h1>
+
+    <div class="d-flex flex-column gap-3 mt-4 m-1">
+      <app-counter type="visited" [value]="13"></app-counter>
+      <app-counter type="wish" [value]="8"></app-counter>
+    </div>
+  </div>
+</div>
