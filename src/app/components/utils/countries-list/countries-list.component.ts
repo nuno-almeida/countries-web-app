@@ -1,8 +1,8 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CountriesService } from '../../../services/countries.service';
 import { CountriesCardComponent } from '../countries-card/countries-card.component';
-import { Country } from '../../../models/auth';
+import { Country } from '../../../models/country';
 
 @Component({
   selector: 'app-countries-list',

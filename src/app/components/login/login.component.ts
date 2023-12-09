@@ -10,10 +10,10 @@ import { Component, effect, inject } from '@angular/core';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  // TODO change to private
-  authService = inject(AuthService);
-  router = inject(Router);
-  activatedRoute = inject(ActivatedRoute);
+  private authService = inject(AuthService);
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+  
   isAuth = this.authService.authentication().isAuthenticated;
 
   constructor() {

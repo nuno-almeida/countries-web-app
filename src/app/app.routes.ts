@@ -1,20 +1,22 @@
 import { Routes } from '@angular/router';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { authGuard } from './guards/auth.guard';
 import { MainComponent } from './components/home/main/main.component';
-import { VisitedListComponent } from './components/home/visited-list/visited-list.component';
-import { WishListComponent } from './components/home/wish-list/wish-list.component';
 
 export const routes: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
+    loadComponent: () =>
+      import(
+        './components/login/login.component'
+      ).then((x) => x.LoginComponent),
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    loadComponent: () =>
+      import(
+        './components/register/register.component'
+      ).then((x) => x.RegisterComponent),
   },
   {
     path: '',
@@ -35,15 +37,20 @@ export const routes: Routes = [
       },
       {
         path: 'visited',
-        component: VisitedListComponent,
+        loadComponent: () =>
+          import(
+            './components/home/visited-list/visited-list.component'
+          ).then((x) => x.VisitedListComponent),
       },
       {
         path: 'wish',
-        component: WishListComponent,
+        loadComponent: () =>
+          import(
+            './components/home/wish-list/wish-list.component'
+          ).then((x) => x.WishListComponent),
       },
     ],
   },
   { path: '**', redirectTo: '' },
 ];
 
-// TODO lazy load

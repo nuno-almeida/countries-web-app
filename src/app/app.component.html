@@ -16,7 +16,7 @@
       class="collapse navbar-collapse"
       [ngClass]="expandMobileMenu ? 'show' : ''"
     >
-      @if (isAuth()) {
+      @if (isAuth) {
       <ul class="navbar-nav mr-auto w-100 d-flex align-items-lg-center">
         <li class="nav-item mx-1">
           <a class="nav-link" routerLink="/visited">
@@ -33,7 +33,7 @@
       }
 
       <ul class="navbar-nav d-flex align-items-lg-center">
-        @if (isAuth()) {
+        @if (isAuth) {
         <button class="mx-2 btn btn-primary" (click)="logout()">Logout</button>
         } @else {
         <button class="mx-2 btn btn-outline-primary" routerLink="/register">

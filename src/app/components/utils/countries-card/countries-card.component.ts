@@ -1,5 +1,5 @@
 import { Component, Input, inject } from '@angular/core';
-import { Country } from '../../../models/auth';
+import { Country } from '../../../models/country';
 import { CountriesService } from '../../../services/countries.service';
 
 @Component({

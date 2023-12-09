@@ -9,7 +9,7 @@ import { AuthService } from '../../services/auth.service';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
-  authService = inject(AuthService);
+  private authService = inject(AuthService);
 
   register() {
     this.authService.register('user', 'pass');

@@ -1,4 +1,4 @@
-import { Country } from './../models/auth';
+import { Country } from './../models/country';
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject, signal } from '@angular/core';
 import { first, forkJoin, of, tap } from 'rxjs';
