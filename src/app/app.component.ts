@@ -28,14 +28,14 @@ export class AppComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   
-  isAuth = this.authService.authentication().isAuthenticated;
+  isAuth = () => this.authService.authentication().isAuthenticated;
   expandMobileMenu = false;
 
   constructor() {
     // NOTE at this moment the effect() API is still in developer preview
     // in a real scenario this should be done based on the response of the login method
     effect(() => {
-      if (!this.isAuth) {
+      if (!this.isAuth()) {
         this.router.navigate(['/']);
       }
     });

@@ -12,8 +12,6 @@ export class AuthService {
     user: { id: localStorage.getItem('userid') || '' },
   });
 
-  constructor() {}
-
   login(userId: string, password: string) {
     if (
       userId === localStorage.getItem('userid') &&

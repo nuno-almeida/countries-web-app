@@ -1,3 +1,33 @@
-<p>login works!</p>
+<form class="my-5 d-flex flex-column align-items-center gap-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div class="form-group w-50">
+        <input class="form-control" formControlName="userid" type="text" [placeholder]="'UserId'">
+        @if (isFormSubmitted && formControls.userid.errors && formControls.userid.errors.required) {
+        <div class="invalid-feedback d-block">
+            UserId is required
+        </div>
+        }
+    </div>
 
-<button type="button" (click)="login()">Send login</button>
+    <div class="form-group w-50">
+        <div class="input-group">
+            <input class="form-control" formControlName="password" type="password" [placeholder]="'Password'">
+            @if (isFormSubmitted && formControls.password.errors && formControls.password.errors.required) {
+            <div class="invalid-feedback d-block">
+                Password is required
+            </div>
+            }
+        </div>
+    </div>
+
+    @if (!!errorMessage) {
+    <div class="alert alert-danger" role="alert">
+        <span>{{ errorMessage }}</span>
+    </div>
+    }
+
+    <button class="btn btn-primary w-50" [disabled]="isLoading || loginForm.disabled">
+        @if (!isLoading) {
+        <span>Login</span>
+        }
+    </button>
+</form>
