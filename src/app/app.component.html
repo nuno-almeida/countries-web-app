@@ -20,13 +20,13 @@
       <ul class="navbar-nav mr-auto w-100 d-flex align-items-lg-center">
         <li class="nav-item mx-1">
           <a class="nav-link" routerLink="/visited">
-            <span translate>Visited</span>
+            <span translate>Visited (<app-counter-value [type]="'visited'"></app-counter-value>)</span>
           </a>
         </li>
 
         <li class="nav-item mx-1">
           <a class="nav-link" routerLinkActive="active" routerLink="/wish">
-            <span translate>Wish</span>
+            <span translate>Wish (<app-counter-value [type]="'wish'"></app-counter-value>)</span>
           </a>
         </li>
       </ul>

@@ -8,6 +8,7 @@ import {
 } from '@angular/router';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './services/auth.service';
+import { CounterValueComponent } from './components/utils/counter-value/counter-value.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { AuthService } from './services/auth.service';
     RouterLink,
     RouterLinkActive,
     NgbModule,
+    CounterValueComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',

@@ -4,6 +4,6 @@
         @if (type === 'visited') {Visited} @else {Wish to visit}
     </p>
     <p class="badge counter-value" [ngClass]="type === 'visited' ? 'text-bg-dark' : 'text-bg-secondary'">
-        {{ value }}
+        <app-counter-value [regionId]="regionId" [type]="type"></app-counter-value>
     </p>
 </div>
