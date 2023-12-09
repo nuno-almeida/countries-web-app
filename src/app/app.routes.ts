@@ -22,19 +22,28 @@ export const routes: Routes = [
     canActivate: [authGuard],
     runGuardsAndResolvers: 'always',
     children: [
-        {
-            path: '',
-            component: MainComponent,
-        },
-        {
-            path: 'visited',
-            component: VisitedListComponent,
-        },
-        {
-            path: 'wish',
-            component: WishListComponent,
-        }
-    ]
+      {
+        path: '',
+        component: MainComponent,
+      },
+      {
+        path: 'countries/:regionId',
+        loadComponent: () =>
+          import(
+            './components/home/countries-by-region/countries-by-region.component'
+          ).then((x) => x.CountriesByRegionComponent),
+      },
+      {
+        path: 'visited',
+        component: VisitedListComponent,
+      },
+      {
+        path: 'wish',
+        component: WishListComponent,
+      },
+    ],
   },
-  { path: '**', redirectTo: '' }, 
+  { path: '**', redirectTo: '' },
 ];
+
+// TODO lazy load

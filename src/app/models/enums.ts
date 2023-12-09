@@ -1,7 +1,8 @@
 export enum Continent {
-    Africa,
-    America,
-    Asica,
-    Europe,
-    Oceania,
-}
+    africa = 'africa',
+    americas = 'americas',
+    asia = 'asia',
+    europe = 'europe',
+    oceania = 'oceania',
+  }
+  

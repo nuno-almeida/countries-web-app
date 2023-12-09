@@ -1,0 +1,16 @@
+@if (isLoading()) {
+<div class="d-flex justify-content-center m-5">
+  <div class="spinner-border" role="status"></div>
+</div>
+} @else {
+  @if (countries().length === 0) {
+  <div class="alert alert-light text-back-50 m-5 text-center">No <span>{{typeId}}</span> countries to show!</div>
+  } @else {
+  <div class="d-flex flex-wrap gap-4 m-4"
+    [ngClass]="['visited', 'wish'].includes(typeId) ? '' : 'justify-content-around'">
+    @for (country of countries(); track country.id) {
+    <app-countries-card [country]="country"></app-countries-card>
+    }
+  </div>
+  }
+}

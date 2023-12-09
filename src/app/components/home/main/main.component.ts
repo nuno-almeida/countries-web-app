@@ -15,10 +15,10 @@ export class MainComponent {
     id: Continent;
     title: string;
   }[] = [
-    { id: Continent.Africa, title: 'Africa' },
-    { id: Continent.America, title: 'America' },
-    { id: Continent.Asica, title: 'Asia' },
-    { id: Continent.Europe, title: 'Europe' },
-    { id: Continent.Oceania, title: 'Oceania' },
+    { id: Continent.africa, title: 'Africa' },
+    { id: Continent.americas, title: 'America' },
+    { id: Continent.asia, title: 'Asia' },
+    { id: Continent.europe, title: 'Europe' },
+    { id: Continent.oceania, title: 'Oceania' },
   ];
 }

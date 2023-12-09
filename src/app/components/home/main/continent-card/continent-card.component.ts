@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { Continent } from '../../../../models/enums';
 import { CounterComponent } from './counter/counter.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-continent-card',
@@ -10,17 +11,15 @@ import { CounterComponent } from './counter/counter.component';
   styleUrl: './continent-card.component.scss',
 })
 export class ContinentCardComponent {
+private router = inject(Router);
+
   @Input({ required: true })
   public continent: { id: Continent; title: string } = {
-    id: Continent.Africa,
+    id: Continent.africa,
     title: '',
   };
 
   onClick(): void {
-    // TODO go to REGION
-    console.log(this.continent.id);
+    this.router.navigateByUrl('countries/' + Continent[this.continent.id]);
   }
-
-  // TODO onClick on counter show the specify region selected
-  // The wish and visited page could be splitted by section per region
 }
