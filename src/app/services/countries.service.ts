@@ -57,7 +57,7 @@ export class CountriesService {
     forkJoin([
       of(this.getVisitedSaved()),
       of(this.getWishedSaved()),
-      this.http.get<Country[]>('https://restcountries.com/v3.1/all'),
+      this.http.get<Country[]>('https://restcountries.com/v3.1/all?fields=name,cca3,capital,region,subregion,flags'),
     ])
       .pipe(
         first(),
