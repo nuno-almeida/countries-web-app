@@ -1,27 +1,26 @@
-# CountriesWebApp
+# Countries Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
+This app displays countries per continent from the REST Countries API. Each country card contains one button to mark the country as visited and other button to mark it as wish to visit. Detailed info about the API here: https://gitlab.com/restcountries/restcountries <br />
+It contains the following pages:<br />
 
-## Development server
+<ul>
+    <li> Login: it allows the user to login. It just checks if the used login/password are saved in the localStorage.
+    </li>
+    <li> Register: it allows to create a user account. It is simple stored in the localStorage.
+    </li>
+    <li> Home: Displays one card per continent with counters of visited and wished countries of the continent. Clicking on the card opens the /countries/:continentId path.
+    </li>
+    <li> /countries/:continentId: Displays the countries of the continent.
+    </li>
+    <li>Visited: this path is available when the used is loggedIn. It displays the countries marked as visited.</li>
+    <li>Wish: this path is available when the used is loggedIn. It displays the countries marked as wished.</li>
+</ul>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## GitHub Page
 
-## Code scaffolding
+This app is deploy in GithHub Pages and may be accessed in: <br /> https://nuno-almeida.github.io/countries-web-app/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run locally
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Runs the app in the development mode with `npm run start` command.\
+Open [http://localhost:4200](http://localhost:4200) to view it in your browser.
