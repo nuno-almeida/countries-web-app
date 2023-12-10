@@ -15,10 +15,7 @@ export class AuthService {
   async login(userId: string, password: string) {
     await delay(2000);
 
-    if (
-      userId === localStorage.getItem('userid') &&
-      password === localStorage.getItem('pass')
-    ) {
+    if (password === localStorage.getItem(`auth_${userId}`)) {
       localStorage.setItem('login', 'true');
 
       this.authentication.set({
@@ -51,8 +48,7 @@ export class AuthService {
   async register(userId: string, password: string) {
     await delay(2000);
 
-    localStorage.setItem("userid", userId);
-    localStorage.setItem("pass", password);
+    localStorage.setItem(`auth_${userId}`, password);
 
     return {
       ok: true,
