@@ -12,7 +12,9 @@ export class AuthService {
     user: { id: localStorage.getItem('userid') || '' },
   });
 
-  login(userId: string, password: string) {
+  async login(userId: string, password: string) {
+    await delay(2000);
+
     if (
       userId === localStorage.getItem('userid') &&
       password === localStorage.getItem('pass')
@@ -45,14 +47,16 @@ export class AuthService {
     });
   }
 
-    // NOTE this is just a demo example
+  // NOTE this is just a demo example
   async register(userId: string, password: string) {
-      await delay(2000);
-      
-      localStorage.setItem("login", "true");
-      localStorage.setItem("userid", userId);
-      localStorage.setItem("pass", password);
+    await delay(2000);
 
-      return true
+    localStorage.setItem("userid", userId);
+    localStorage.setItem("pass", password);
+
+    return {
+      ok: true,
+      message: 'User created',
     };
+  };
 }

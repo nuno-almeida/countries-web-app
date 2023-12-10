@@ -1,8 +1,8 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit, effect, inject } from '@angular/core';
+import { Component, effect, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,15 +11,18 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private activatedRoute = inject(ActivatedRoute);
-  private formBuilder = inject(FormBuilder);
 
   isAuth = this.authService.authentication().isAuthenticated;
 
-  loginForm!: FormGroup;
+  loginForm = new FormGroup({
+    userid: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+  });
+
   errorMessage = '';
   isLoading = false;
   isFormSubmitted = false;
@@ -38,29 +41,25 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.loginForm = this.formBuilder.group({
-      userid: ['', Validators.required],
-      password: ['', Validators.required]
-    });
-  }
-
   onSubmit(): void {
-    this.errorMessage = '';
     this.isFormSubmitted = true;
-
+    
     if (this.loginForm.invalid) {
       return;
     }
 
+    this.errorMessage = '';
     this.isLoading = true;
     this.loginForm.disable();
 
     const rawValue = this.loginForm.getRawValue();
-    const response = this.authService.login(rawValue.userid, rawValue.password);
-
-    if (!response.ok) {
-      this.errorMessage = response.message;
-    }
+    this.authService.login(rawValue.userid!, rawValue.password!)
+      .then(response => {
+        if (!response.ok) {
+          this.errorMessage = response.message;
+          this.isLoading = false;
+          this.loginForm.enable();
+        }
+      });
   }
 }

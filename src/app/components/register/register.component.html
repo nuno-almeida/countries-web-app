@@ -1,3 +1,49 @@
-<p>register works!</p>
-
-<button type="button" (click)="register()">Send register</button>
+<form class="my-5 d-flex flex-column align-items-center gap-4" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="form-group w-50">
+      <input class="form-control" formControlName="userid" type="text" [placeholder]="'UserId'" />
+      @if (isFormSubmitted && formControls.userid.errors) {
+      <div class="invalid-feedback d-block">
+        @if (formControls.userid.errors.required) { UserId is required }
+        @if(formControls.userid.errors.minlength) { UserId should have at least
+        4 characters }
+      </div>
+      }
+    </div>
+  
+    <div class="form-group w-50">
+      <input class="form-control" formControlName="password" type="password" [placeholder]="'Password'" />
+      @if (isFormSubmitted && formControls.password.errors) {
+      <div class="invalid-feedback d-block">
+        @if(formControls.password.errors.required) { Password is required }
+        @if(formControls.password.errors.minlength) { Password should have at
+        least 6 characters }
+      </div>
+      }
+    </div>
+  
+    <div class="form-group w-50">
+      <input class="form-control" formControlName="confirmPassword" type="password" [placeholder]="'Confirm password'" />
+      @if (isFormSubmitted && formControls.confirmPassword.errors) {
+      <div class="invalid-feedback d-block">
+        @if(formControls.confirmPassword.errors.required) { Confirm password is required }
+        @if(formControls.confirmPassword.errors.minlength) { Confirm password should have at
+        least 6 characters }
+      </div>
+      }
+      @if (showPasswordMismatchError()) {
+      <div class="invalid-feedback d-block">Password and confirm password not match</div>
+      }
+    </div>
+  
+    @if (!!status.message) {
+    <div class="alert w-50" [ngClass]="status.ok ? 'alert-info' : 'alert-danger'" role="alert">
+      <span> {{ status.message }} </span>
+    </div>
+    }
+  
+    <button class="btn btn-secondary w-50" [disabled]="(isFormSubmitted && registerForm.invalid) || registerForm.disabled">
+      @if (isLoading) {
+      <div class="spinner-border" role="status"></div>
+      }@else { Register }
+    </button>
+  </form>

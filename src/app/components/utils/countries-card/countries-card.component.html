@@ -1,16 +1,20 @@
 @if (!!country) {
-<div class="pb-2 d-flex flex-column justify-content-between bg-light-subtle country-card h-100">
-    <img [src]="country.flags['png']" class="img-fluid country-flag" loading="lazy" />
-    <p class="text-center text-wrap country-name">
-        {{ country.name.common }}
-    </p>
-    <div class="d-flex justify-content-around">
-        <button class="btn btn-outline-dark btn-sm" type="button" (click)="toggleVisited();">
-            <i>Visited</i>&nbsp;<strong>{{country.isInVisitedList ? 'Yes' : 'No'}}</strong>
-        </button>
-        <button class="btn btn-dark btn-sm" type="button" (click)="toggleWished();">
-            <i>Wish</i>&nbsp;<strong>{{country.isInWishList ? 'Yes' : 'No'}}</strong>
-        </button>
+    <div class="pb-2 d-flex flex-column justify-content-between bg-light-subtle country-card h-100">
+        <img [src]="country.flags['png']" class="img-fluid country-flag" loading="lazy" />
+        <p class="text-center text-wrap country-name">
+            {{ country.name.common }}
+        </p>
+        <div class="d-flex justify-content-around">
+            <button class="btn btn-sm"
+                [ngClass]="{'btn-dark' : country.isInVisitedList, 'btn-outline-dark' : !country.isInVisitedList }"
+                type="button" (click)="toggleVisited();">
+                <i>Visited</i>&nbsp;<strong>{{country.isInVisitedList ? 'Yes' : 'No'}}</strong>
+            </button>
+            <button class="btn btn-sm"
+                [ngClass]="{'btn-dark' : country.isInWishList, 'btn-outline-dark' : !country.isInWishList }" type="button"
+                (click)="toggleWished();">
+                <i>Wish</i>&nbsp;<strong>{{country.isInWishList ? 'Yes' : 'No'}}</strong>
+            </button>
+        </div>
     </div>
-</div>
-}
+    }
