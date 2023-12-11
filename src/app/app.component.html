@@ -4,18 +4,12 @@
       <img src="./assets/logo.png" width="auto" height="32px" alt="Home" />
     </a>
 
-    <button
-      class="navbar-toggler btn"
-      type="button"
-      (click)="toggleMobileMenu()"
-    >
+    <button class="navbar-toggler btn" type="button" (click)="toggleMobileMenu()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div
-      class="collapse navbar-collapse d-lg-flex justify-content-end"
-      [ngClass]="expandMobileMenu ? 'show' : ''"
-    >
+    <div class="collapse navbar-collapse d-flex align-items-start justify-content-lg-end flex-lg-row"
+      [ngClass]="{'show': expandMobileMenu, 'flex-column': isAuth()}">
       @if (isAuth()) {
       <ul class="navbar-nav mr-auto w-100 d-flex align-items-lg-center">
         <li class="nav-item mx-1">
