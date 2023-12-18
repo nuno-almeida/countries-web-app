@@ -1,1 +1,11 @@
-<app-countries-list [typeId]="'visited'"></app-countries-list>
+@if (isLoading()) {
+<div class="d-flex justify-content-center m-5">
+    <div class="spinner-border" role="status"></div>
+</div>
+} @else { @for (res of countries() | countriesByRegionMap; track res.region) {
+<app-tab-countries-by-region [region]="res.region" [countries]="res.countries"></app-tab-countries-by-region>
+} @empty {
+<div class="alert alert-light text-back-50 m-5 text-center">
+    No visited countries to show!
+</div>
+}}

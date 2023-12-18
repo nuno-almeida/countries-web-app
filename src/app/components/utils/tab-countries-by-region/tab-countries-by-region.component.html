@@ -1,0 +1,15 @@
+<div class="card m-4">
+  <div class="card-header">
+    <h5 class="mb-0">
+      <button class="btn btn-outline-secondary w-100 text-dark" style="font-weight: 600;" (click)="toggle()">
+        {{ region | titlecase }}
+      </button>
+    </h5>
+  </div>
+
+  <div class="collapse" [ngClass]="{ show: show }">
+    <div class="card-body">
+      <app-countries-list [countries]="countries"></app-countries-list>
+    </div>
+  </div>
+</div>
