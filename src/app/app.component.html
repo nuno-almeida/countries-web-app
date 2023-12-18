@@ -8,8 +8,8 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse d-flex align-items-start justify-content-lg-end flex-lg-row"
-      [ngClass]="{'show': expandMobileMenu, 'flex-column': isAuth()}">
+    <div class="collapse navbar-collapse d-flex align-items-start align-items-lg-center justify-content-lg-end flex-lg-row"
+      [ngClass]="{'d-none': !expandMobileMenu, 'flex-column': isAuth()}">
       @if (isAuth()) {
       <ul class="navbar-nav mr-auto w-100 d-flex align-items-lg-center">
         <li class="nav-item mx-1">
